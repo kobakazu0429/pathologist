@@ -1,15 +1,12 @@
 {
   "name": "pathologist",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Flatten SVG document into paths",
   "source": "src/index.js",
   "main": "dist/index.js",
   "exports": "dist/index.modern.js",
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
-  "bin": {
-    "pathologist": "bin/pathologist"
-  },
   "scripts": {
     "test": "mocha",
     "build": "microbundle",
@@ -21,13 +18,12 @@
     "lint:prettier": "prettier \"./{src,test}/**/*.{js,ts}\" --write"
   },
   "files": [
-    "bin/pathologist",
     "dist",
     "README.md"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/Rich-Harris/pathologist.git"
+    "url": "git+https://github.com/kobakazu0429/pathologist.git"
   },
   "keywords": [
     "svg",
@@ -35,21 +31,21 @@
     "path",
     "canvas"
   ],
-  "author": "Rich Harris",
+  "author": "kobakakzu0429 <kobakazu10@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/Rich-Harris/pathologist/issues"
+    "url": "https://github.com/kobakazu0429/pathologist/issues"
   },
-  "homepage": "https://gitlab.com/Rich-Harris/pathologist#README",
+  "homepage": "https://github.com/kobakazu0429/pathologist#README",
   "devDependencies": {
     "@kobakazu0429/eslint-config-base": "^2.0.1",
     "eslint": "^7.18.0",
     "microbundle": "^0.13.0",
     "minimist": "^1.2.0",
-    "mocha": "^8.2.1",
-    "svg-parser": "^2.0.4"
+    "mocha": "^8.2.1"
   },
   "dependencies": {
+    "svg-parser": "^2.0.4",
     "svgpath": "^2.3.0"
   }
 }
