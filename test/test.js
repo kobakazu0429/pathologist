@@ -4,8 +4,6 @@ const fs = require("fs/promises");
 const assert = require("assert");
 const pathologist = require("..");
 
-require("source-map-support").install();
-
 describe("pathologist", async () => {
   const SAMPLES = path.join(__dirname, "samples");
   const dirs = await fs.readdir(SAMPLES);

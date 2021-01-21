@@ -2,16 +2,18 @@
   "name": "pathologist",
   "version": "0.1.9",
   "description": "Flatten SVG document into paths",
-  "main": "dist/pathologist.umd.js",
-  "jsnext:main": "dist/pathologist.es.js",
-  "module": "dist/pathologist.es.js",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "exports": "dist/index.modern.js",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
   "bin": {
     "pathologist": "bin/pathologist"
   },
   "scripts": {
     "test": "mocha",
-    "build": "rollup -c && rollup -c rollup.config.cli.js",
-    "dev": "rollup -c -w",
+    "build": "microbundle",
+    "dev": "microbundle watch",
     "prepublish": "npm run lint && npm test",
     "pretest": "npm run build",
     "lint": "npm run lint:eslint && npm run lint:prettier",
@@ -42,15 +44,9 @@
   "devDependencies": {
     "@kobakazu0429/eslint-config-base": "^2.0.1",
     "eslint": "^7.18.0",
+    "microbundle": "^0.13.0",
     "minimist": "^1.2.0",
     "mocha": "^8.2.1",
-    "rollup": "^2.37.1",
-    "rollup-plugin-buble": "^0.19.8",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-string": "^3.0.0",
-    "source-map-support": "^0.5.19",
     "svg-parser": "^2.0.4"
   },
   "dependencies": {
