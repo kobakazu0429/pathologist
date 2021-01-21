@@ -2,7 +2,7 @@
 const path = require("path");
 const fs = require("fs/promises");
 const assert = require("assert");
-const pathologist = require("..");
+const pathologist = require("../dist/index.umd.js");
 
 describe("pathologist", async () => {
   const SAMPLES = path.join(__dirname, "samples");

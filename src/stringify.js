@@ -1,15 +1,15 @@
-function stringifyAttributes(attributes) {
-  return Object.keys(attributes)
-    .map((key) => ` ${key}="${attributes[key]}"`)
+function stringifyProperties(properties) {
+  return Object.keys(properties)
+    .map((key) => ` ${key}="${properties[key]}"`)
     .join("");
 }
 
 export default function stringify(node, indent) {
   if (typeof node === "string") return node;
+  // if (node.tagName === undefined) return "";
 
-  const attributes = stringifyAttributes(node.attributes);
-
-  let str = `${indent}<${node.name}${attributes}`;
+  const properties = stringifyProperties(node.properties);
+  let str = `${indent}<${node.tagName}${properties}`;
 
   if (node.children && node.children.length) {
     str += ">";
@@ -19,6 +19,9 @@ export default function stringify(node, indent) {
       if (typeof child === "string") {
         str += child;
         prefix = "";
+      } else if (child.type === "text") {
+        str += child.value;
+        prefix = "";
       } else {
         str += prefix + stringify(child, indent + "\t");
         prefix = "\n";
@@ -27,9 +30,9 @@ export default function stringify(node, indent) {
 
     if (prefix) prefix += indent;
 
-    str += `${prefix}</${node.name}>`;
-  } else if (node.val) {
-    str += `>${node.val}</${node.name}>`;
+    str += `${prefix}</${node.tagName}>`;
+  } else if (node.value) {
+    str += `>${node.value}</${node.tagName}>`;
   } else {
     str += "/>";
   }

@@ -13,13 +13,13 @@ function line(points) {
 }
 
 const converters = {
-  ellipse: (attributes) => {
-    const cx = attributes.cx || 0;
-    const cy = attributes.cy || 0;
-    const rx = attributes.rx || 0;
-    const ry = attributes.ry || 0;
+  ellipse: (properties) => {
+    const cx = properties.cx || 0;
+    const cy = properties.cy || 0;
+    const rx = properties.rx || 0;
+    const ry = properties.ry || 0;
 
-    const path = cloneExcept(attributes, ["cx", "cy", "rx", "ry"]);
+    const path = cloneExcept(properties, ["cx", "cy", "rx", "ry"]);
     path.d = `M${cx - rx},${cy}a${rx},${ry} 0 1,0 ${
       rx * 2
     },0a${rx},${ry} 0 1,0 ${rx * -2},0`;
@@ -27,12 +27,12 @@ const converters = {
     return path;
   },
 
-  circle: (attributes) => {
-    const cx = attributes.cx || 0;
-    const cy = attributes.cy || 0;
-    const r = attributes.r || 0;
+  circle: (properties) => {
+    const cx = properties.cx || 0;
+    const cy = properties.cy || 0;
+    const r = properties.r || 0;
 
-    const path = cloneExcept(attributes, ["cx", "cy", "r"]);
+    const path = cloneExcept(properties, ["cx", "cy", "r"]);
     path.d = `M${cx - r},${cy}a${r},${r} 0 1,0 ${r * 2},0a${r},${r} 0 1,0 ${
       r * -2
     },0`;
@@ -40,29 +40,29 @@ const converters = {
     return path;
   },
 
-  polygon: (attributes) => {
-    const path = converters.polyline(attributes);
+  polygon: (properties) => {
+    const path = converters.polyline(properties);
     path.d += "Z";
 
     return path;
   },
 
-  polyline: (attributes) => {
-    const path = cloneExcept(attributes, "points");
-    path.d = line(attributes.points.trim().split(/[\s,]+/));
+  polyline: (properties) => {
+    const path = cloneExcept(properties, "points");
+    path.d = line(properties.points.trim().split(/[\s,]+/));
 
     return path;
   },
 
-  rect: (attributes) => {
-    const x = +attributes.x || 0;
-    const y = +attributes.y || 0;
-    const width = +attributes.width || 0;
-    const height = +attributes.height || 0;
-    // const rx = +attributes.rx || 0; // TODO handle...
-    // const ry = +attributes.ry || 0; // TODO handle...
+  rect: (properties) => {
+    const x = +properties.x || 0;
+    const y = +properties.y || 0;
+    const width = +properties.width || 0;
+    const height = +properties.height || 0;
+    // const rx = +properties.rx || 0; // TODO handle...
+    // const ry = +properties.ry || 0; // TODO handle...
 
-    const path = cloneExcept(attributes, [
+    const path = cloneExcept(properties, [
       "x",
       "y",
       "width",
@@ -77,13 +77,13 @@ const converters = {
     return path;
   },
 
-  line: (attributes) => {
-    const path = cloneExcept(attributes, ["x1", "y1", "x2", "y2"]);
+  line: (properties) => {
+    const path = cloneExcept(properties, ["x1", "y1", "x2", "y2"]);
     path.d = line([
-      attributes.x1 || 0,
-      attributes.y1 || 0,
-      attributes.x2 || 0,
-      attributes.y2 || 0,
+      properties.x1 || 0,
+      properties.y1 || 0,
+      properties.x2 || 0,
+      properties.y2 || 0,
     ]);
 
     return path;
@@ -93,15 +93,15 @@ const converters = {
 };
 
 export default function convert(node) {
-  const converter = converters[node.name];
+  const converter = converters[node.tagName];
   if (converter) {
-    const attributes = converter(node.attributes);
+    const properties = converter(node.properties);
 
     return {
-      name: "path",
-      attributes,
+      tagName: "path",
+      properties,
     };
   }
 
-  throw new Error(`TODO <${node.name}>`);
+  throw new Error(`TODO <${node.tagName}>`);
 }

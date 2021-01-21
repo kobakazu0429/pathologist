@@ -1,10 +1,10 @@
 import { assign } from "./utils/object.js";
 
 export default function applyClasses(node, classes) {
-  if (node.attributes.class) {
+  if (node.properties.class) {
     classes = assign({}, classes);
 
-    node.attributes.class
+    node.properties.class
       .split(" ")
       .filter(Boolean)
       .forEach((className) => (classes[className] = true));
@@ -13,6 +13,6 @@ export default function applyClasses(node, classes) {
   const classList = Object.keys(classes).join(" ");
 
   if (classList) {
-    node.attributes.class = classList;
+    node.properties.class = classList;
   }
 }

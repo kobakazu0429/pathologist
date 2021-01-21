@@ -4,11 +4,11 @@ import stringify from "./stringify.js";
 
 class Pathologist {
   constructor(source) {
-    this.source = parseSvg(source);
+    this.source = parseSvg(source).children[0];
 
     this.target = {
-      name: this.source.name,
-      attributes: Object.assign({}, this.source.attributes),
+      tagName: this.source.tagName,
+      properties: Object.assign({}, this.source.properties),
       children: [],
     };
 
@@ -29,8 +29,8 @@ export function parse(source) {
 
   return {
     paths: pathologist.target.children
-      .filter((node) => node.name === "path")
-      .map((node) => node.attributes),
+      .filter((node) => node.tagName === "path")
+      .map((node) => node.properties),
     toString() {
       return pathologist.toString();
     },
