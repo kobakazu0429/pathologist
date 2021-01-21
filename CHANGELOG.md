@@ -1,41 +1,47 @@
 # pathologist changelog
 
+## 0.2.1
+
+- Maintainer is changed to @kobakazu0429.
+- update svgpath@2.3.0
+- remove cli
+
 ## 0.1.9
 
-* Move bundled dependencies to devDependencies
+- Move bundled dependencies to devDependencies
 
 ## 0.1.8
 
-* Prevent nodes from mutating each others' attributes
+- Prevent nodes from mutating each others' attributes
 
 ## 0.1.7
 
-* Add help text and README
+- Add help text and README
 
 ## 0.1.6
 
-* Fix `<rect>`
+- Fix `<rect>`
 
 ## 0.1.5
 
-* Inherit `<g>` attributes and classes
+- Inherit `<g>` attributes and classes
 
 ## 0.1.4
 
-* Export `paths` array
+- Export `paths` array
 
 ## 0.1.3
 
-* `<polygon>` and `<polyline>`
+- `<polygon>` and `<polyline>`
 
 ## 0.1.2
 
-* Convert `<line>` elements
+- Convert `<line>` elements
 
 ## 0.1.1
 
-* Handle omitted attributes
+- Handle omitted attributes
 
 ## 0.1.0
 
-* First experimental release
+- First experimental release

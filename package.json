@@ -1,6 +1,6 @@
 {
   "name": "pathologist",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Flatten SVG document into paths",
   "source": "src/index.js",
   "main": "dist/index.js",
@@ -41,7 +41,6 @@
     "@kobakazu0429/eslint-config-base": "^2.0.1",
     "eslint": "^7.18.0",
     "microbundle": "^0.13.0",
-    "minimist": "^1.2.0",
     "mocha": "^8.2.1"
   },
   "dependencies": {
