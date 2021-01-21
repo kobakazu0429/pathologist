@@ -13,7 +13,9 @@
     "pretest": "npm run build",
     "build": "rollup -c && rollup -c rollup.config.cli.js",
     "dev": "rollup -c -w",
-    "lint": "eslint src",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint \"{src,spec}/**/*.{js,ts}\" --fix",
+    "lint:prettier": "prettier \"./{src,spec}/**/*.{js,ts}\" --write",
     "prepublish": "npm run lint && npm test"
   },
   "files": [
@@ -38,17 +40,18 @@
   },
   "homepage": "https://gitlab.com/Rich-Harris/pathologist#README",
   "devDependencies": {
-    "eslint": "^3.2.2",
+    "@kobakazu0429/eslint-config-base": "^2.0.1",
+    "eslint": "^7.18.0",
     "minimist": "^1.2.0",
-    "mocha": "^3.0.1",
-    "rollup": "^0.34.5",
-    "rollup-plugin-buble": "^0.12.1",
-    "rollup-plugin-commonjs": "^3.3.1",
-    "rollup-plugin-json": "^2.0.1",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-string": "^2.0.2",
-    "source-map-support": "^0.4.2",
-    "svg-parser": "^1.0.4",
+    "mocha": "^8.2.1",
+    "rollup": "^2.37.1",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-string": "^3.0.0",
+    "source-map-support": "^0.5.19",
+    "svg-parser": "^2.0.4",
     "svgpath": "^2.1.6"
   }
 }
